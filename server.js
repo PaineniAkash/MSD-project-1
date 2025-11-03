@@ -30,7 +30,7 @@ const db = require('./config/keys').mongoURI;
 
 //MongoDB connection
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
 
@@ -54,12 +54,10 @@ app.use('/api/record', record);
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
 
   app.get('*', (req, res) => {
-    res.sendFile(
-      path.resolve(__dirname, 'client', 'build', 'index.html')
-    );
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
 

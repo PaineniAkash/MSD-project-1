@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "An enterprise payroll application",
   "scripts": {
+    "start": "node server.js",
     "server": "nodemon server.js",
     "back": "node server.js",
     "front": "npm start --prefix client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm install --prefix client && npm run build --prefix client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
