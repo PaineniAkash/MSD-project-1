@@ -239,6 +239,5 @@ module.exports = userDetails => {
         </table>
       </body>
     </html>
-    
-    
+    `;
 }
